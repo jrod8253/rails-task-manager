@@ -1,24 +1,36 @@
 <h1>SHOW details of a task</h1>
 
-<p><%= @task.details %></p>
-
-
-<% if @task.completed == true %>
-  <div class="d-inline">
-    <i class="fa-sharp fa-solid fa-square-check"></i>
-    Completed
+<div class="container">
+  <div class="row b-s-5">
+    <h4>Task Details:</h4>
+    <p><%= @task.details %></p>
   </div>
-<% elsif @task.completed == false %>
-  <div class="d-inline">
-    <i class="fa-sharp fa-light fa-square-check"></i>
-    This task is not complete
+
+  <div class="row">
+    <% if @task.completed == true %>
+      <div class="d-inline">
+        <i class="fa-solid fa-circle-check fa-beat" style="color: #27c44e;"></i>
+        Completed
+      </div>
+    <% elsif @task.completed == false %>
+      <div class="d-inline">
+        <i class="fa-regular fa-circle-xmark fa-bounce" style="color: #ff1100;"></i>
+        This task is not complete
+      </div>
+    <% end %>
   </div>
-<% end %>
-
-
+</div>
 
 <div class="container">
-<%= link_to "Edit this Task", task_edit_path %>
-<%= link_to "Go Back to Tasks", tasks_path %>
-<%= link_to "Delete this Task", task_delete_path(@task),  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+  <div class="row justify-content-start">
+    <div class="col">
+      <%= link_to "Edit this Task", task_edit_path %>
+    </div>
+    <div class="col">
+      <%= link_to "Go Back to Tasks", tasks_path %>
+    </div>
+    <div class="col">
+      <%= link_to "Delete this Task", task_delete_path(@task),  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+    </div>
+  </div>
 </div>
